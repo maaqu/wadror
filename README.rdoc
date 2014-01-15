@@ -1,2 +1,5 @@
 Ratebeer application by macjantu
 
+Week 1:
+http://macjantu-rb.herokuapp.com/beers
+
