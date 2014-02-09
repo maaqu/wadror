@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/mluukkai/ratebeer-public.png)](https://travis-ci.org/mluukkai/ratebeer-public)
+[![Build Status](https://travis-ci.org/maaqu/wadror.png)](https://travis-ci.org/maaqu/wadror)
