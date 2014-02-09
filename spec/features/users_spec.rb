@@ -45,4 +45,16 @@ end
       expect(page).to have_content "has made 1 rating"
       expect(page).to have_content "iso 3 15"
     end
+  it "can remove his own ratings and they are removed from the database" do
+    sign_in(username:"Pekka", password:"Foobar1")
+    FactoryGirl.create :brewery, name:"Koff"
+    FactoryGirl.create :beer, name:"iso 3"
+    visit new_rating_path
+    select('iso 3', from:'rating[beer_id]')
+    fill_in('rating[score]', with:'15')
+    click_button "Create Rating"
+    visit user_path(1)
+    click_link "delete"
+    expect(page).to have_content "none so far"
+    end
   end

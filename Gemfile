@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 #Byebug
 gem 'byebug', group: [:development, :test]
 
+gem 'simplecov', require: false
+
 group :test do
   gem 'rspec-rails', '~> 2.14.1'
 end
