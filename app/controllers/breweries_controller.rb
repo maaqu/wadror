@@ -1,6 +1,6 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, :only => :destroy
+  before_action :ensure_that_signed_in, except: [:index, :show]
   # GET /breweries
   # GET /breweries.json
   def index
@@ -54,11 +54,17 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
+    if current_user.admin?
     @brewery.destroy
     respond_to do |format|
       format.html { redirect_to breweries_url }
       format.json { head :no_content }
     end
+    else
+      format.html { redirect_to breweries_url }
+      format.json { render json: @brewery.errors, status: :unprocessable_entity }
+    end
+
   end
 
   private
@@ -74,10 +80,4 @@ class BreweriesController < ApplicationController
 
   private
 
-  def authenticate
-    admin_accounts = { "admin" => "secret", "pekka" => "beer", "arto" => "foobar", "matti" => "ittam"}
-    authenticate_or_request_with_http_basic do |username, password|
-      admin_accounts[username]
-      end
-  end
 end

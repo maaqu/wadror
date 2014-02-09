@@ -1,5 +1,6 @@
 class BeerClubsController < ApplicationController
   before_action :set_beer_club, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in, except: [:index, :show]
 
   # GET /beer_clubs
   # GET /beer_clubs.json
@@ -54,12 +55,18 @@ class BeerClubsController < ApplicationController
   # DELETE /beer_clubs/1
   # DELETE /beer_clubs/1.json
   def destroy
-    @beer_club.destroy
-    respond_to do |format|
+    if current_user.admin?
+      @beer_club.destroy
+      respond_to do |format|
+        format.html { redirect_to beer_clubs_url }
+        format.json { head :no_content }
+      end
+    else
       format.html { redirect_to beer_clubs_url }
-      format.json { head :no_content }
+      format.json { render json: @beer_club.errors, status: :unprocessable_entity }
     end
-  end
+    end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
