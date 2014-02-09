@@ -1,10 +1,16 @@
 language: ruby
-
 rvm:
- - 2.0.0
-
+- 2.0.0
 script:
- - bundle exec rake db:migrate --trace
- - RAILS_ENV=test bundle exec rake db:migrate --trace
- - bundle exec rake db:test:prepare
- - bundle exec rspec -fd spec/
+- bundle exec rake db:migrate --trace
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rspec -fd spec/
+deploy:
+  provider: heroku
+  api_key:
+    secure: BU3EoQlxSfcqLfF0trqfjxXj+vEuBD8JJJd1g8K4d9MaWeoRIfbwVqmNJqvxBuUmFOx3MEtWo7Y55gZH70R1bkU1/1Djv0lo1JC9YlGVfrYfNkthEuHVfJkXVPI1bxJ1NBHOwwMSBwcm/AkKdum1Ji5h5G3y/LQOaY4mH2FpEes=
+  app: macjantu-rb
+  on:
+    repo: maaqu/wadror
+  run: "rake db:migrate"
