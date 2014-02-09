@@ -1,6 +1,10 @@
 Ratebeer::Application.routes.draw do
 
 
+  resources :memberships
+
+  resources :beer_clubs
+
   resources :users
 
   resources :beers

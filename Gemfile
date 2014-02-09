@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 1.2'
 #Byebug
 gem 'byebug', group: [:development, :test]
 
+group :test do
+  gem 'rspec-rails', '~> 2.14.1'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -58,3 +62,9 @@ group :production do
 end
 
 gem 'bcrypt-ruby', '~> 3.1.2'
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
