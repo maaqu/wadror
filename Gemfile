@@ -32,6 +32,12 @@ gem 'byebug', group: [:development, :test]
 
 gem 'simplecov', require: false
 
+# Make http requests somewhere far away
+gem 'httparty'
+
+#Saves configurations, passwords etc. to a database
+gem "rails-settings-cached", "0.3.1"
+
 group :test do
   gem 'rspec-rails', '~> 2.14.1'
 end
@@ -69,4 +75,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  # Lets you use stubbing with the help of httparty
+  gem 'webmock'
 end
