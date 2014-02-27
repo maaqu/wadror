@@ -1,4 +1,4 @@
-Ratebeer application by macjantu
+Ruby on Rails web-palvelinohjelmointikurssin aikana rakennettu olutpalvelu
 
 http://macjantu-rb.herokuapp.com/beers
 
